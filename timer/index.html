@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>순공타이머 — 노션을 품은 공부 기록 앱</title>
+  <meta name="description" content="진짜 집중한 시간만 측정하고, 노션에 자동으로 기록하는 순공타이머. 공부가 쌓일수록 내가 선명해져요.">
+  <link rel="icon" type="image/png" href="/timer-icon.png">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => lucide.createIcons());</script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --accent: #FF5C35;
+      --gray: #888;
+      --border: #e8e8e8;
+      --card-bg: #f5f5f5;
+    }
+
+    body {
+      font-family: 'NanumSquareRound', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 1.4rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    .sep { color: var(--border); font-size: 1.1rem; }
+
+    .page-name {
+      font-size: 0.82rem;
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 6rem 2.5rem 5rem;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 5rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .hero-app {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      object-fit: contain;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero h1 .highlight { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--gray);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #6a6a6a;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2.2rem;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--fg);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      padding: 0.85rem 1.8rem;
+      border-radius: 99px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+
+    .cta-btn:hover { opacity: 0.82; transform: translateY(-1px); }
+
+    .cta-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Section ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      white-space: nowrap;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Features ── */
+    .features {
+      margin-bottom: 5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 1.8rem;
+    }
+
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-icon svg { width: 32px; height: 32px; stroke-width: 1.5; color: inherit; }
+    .notion-badge svg { width: 14px; height: 14px; stroke-width: 1.5; vertical-align: middle; }
+
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      font-size: 0.83rem;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    /* ── Notion tag ── */
+    .notion-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 2.5rem;
+    }
+
+    .notion-badge img {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+    }
+
+    /* ── Pricing ── */
+    .pricing {
+      margin-bottom: 5rem;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .pricing-card {
+      flex: 1 1 220px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 1.8rem;
+    }
+
+    .pricing-card.featured {
+      background: var(--fg);
+      color: #fff;
+    }
+
+    .plan-name {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.8rem;
+    }
+
+    .pricing-card.featured .plan-name { color: rgba(255,255,255,0.55); }
+
+    .plan-price {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.2rem;
+      color: var(--fg);
+    }
+
+    .pricing-card.featured .plan-price { color: #fff; }
+
+    .plan-period {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 1.4rem;
+    }
+
+    .pricing-card.featured .plan-period { color: rgba(255,255,255,0.55); }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .plan-features li {
+      font-size: 0.83rem;
+      color: #555;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .pricing-card.featured .plan-features li { color: rgba(255,255,255,0.8); }
+
+    .plan-features li::before {
+      content: '✓';
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .pricing-card.featured .plan-features li::before { color: #fff; }
+
+    .pricing-note {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 1rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+    }
+
+    .footer-biz {
+      max-width: 860px;
+      margin: 0 auto 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer-biz p {
+      font-size: 0.72rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .footer-biz strong {
+      color: #888;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--fg); }
+
+    @media (max-width: 600px) {
+      header, main, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      main { padding-top: 4rem; padding-bottom: 4rem; }
+      .hero { margin-bottom: 3.5rem; }
+      .features { margin-bottom: 3.5rem; }
+      .pricing { margin-bottom: 3.5rem; }
+      .footer-biz, .footer-bottom { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo">
+      <img src="/nock-logo-concept-4.png" alt="nock">
+    </a>
+    <span class="sep">/</span>
+    <span class="page-name">순공타이머</span>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <p class="hero-eyebrow">노크 · 기록 앱 시리즈</p>
+
+      <div class="hero-app">
+        <img class="hero-icon" src="/timer-icon.png" alt="순공타이머 아이콘">
+        <div>
+          <h1>순공타이머</h1>
+          <p class="hero-sub">노션을 품은 공부 기록 타이머</p>
+        </div>
+      </div>
+
+      <span class="notion-badge">
+        <i data-lucide="link"></i>
+        Notion 연동
+      </span>
+
+      <p class="hero-desc">
+        진짜 집중한 시간만 측정하고, 노션에 자동으로 기록해요.<br>
+        공부가 쌓일수록 내가 선명해져요.
+      </p>
+
+      <a href="https://timerapp.nock.kr" class="cta-btn" target="_blank" rel="noopener">
+        앱 시작하기
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="features">
+      <div class="section-header">
+        <span class="section-label">Features</span>
+        <span class="section-line"></span>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon"><i data-lucide="timer"></i></span>
+          <p class="feature-title">순수 집중 시간 측정</p>
+          <p class="feature-desc">공부 시간과 휴식 시간을 명확히 분리해요. 쉬는 동안에는 타이머가 멈추고, 진짜 집중한 시간만 기록돼요.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon"><i data-lucide="database"></i></span>
+          <p class="feature-title">노션 자동 기록</p>
+          <p class="feature-desc">공부가 끝나면 기록이 자동으로 노션 데이터베이스에 저장돼요. 따로 입력할 필요 없이 데이터가 쌓여요.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon"><i data-lucide="bar-chart-2"></i></span>
+          <p class="feature-title">나만의 공부 데이터</p>
+          <p class="feature-desc">과목별, 날짜별 기록이 노션에서 자유롭게 분석돼요. 공부 패턴을 한눈에 파악하고 계획을 세워요.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pricing">
+      <div class="section-header">
+        <span class="section-label">Pricing</span>
+        <span class="section-line"></span>
+      </div>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <p class="plan-name">Free</p>
+          <p class="plan-price">0원</p>
+          <p class="plan-period">기본 기능 영구 무료</p>
+          <ul class="plan-features">
+            <li>순공 타이머 기본 기능</li>
+            <li>노션 자동 기록</li>
+            <li>일별 공부 기록 확인</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <p class="plan-name">월간 프리미엄</p>
+          <p class="plan-price">4,900원</p>
+          <p class="plan-period">/ 월</p>
+          <ul class="plan-features">
+            <li>무료 플랜의 모든 기능</li>
+            <li>할일 날짜 자유롭게 이동</li>
+            <li>이번달·올해 통계 &amp; 기간 비교</li>
+            <li>주간·월간·연간 집계 차트</li>
+            <li>시간표 — 집중할 일 지정 &amp; 타임트래커 기록</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">결제는 포트원(PortOne)을 통해 처리됩니다. 구독 취소 시 잔여 기간 마지막 날까지 이용 가능합니다.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-biz">
+      <p><strong>상호명</strong> 노크 &nbsp;|&nbsp; <strong>대표자</strong> 김연경 &nbsp;|&nbsp; <strong>사업자등록번호</strong> 214-73-00603</p>
+      <p><strong>사업장 주소</strong> 경기도 용인시 기흥구 구성3로 65</p>
+      <p><strong>고객센터</strong> 010-8050-2258 &nbsp;|&nbsp; <strong>이메일</strong> <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a></p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 nock.kr</p>
+      <nav class="footer-links">
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/terms">이용약관</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

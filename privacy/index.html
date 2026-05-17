@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개인정보처리방침 — nock.kr</title>
+  <link rel="icon" type="image/png" href="/timer-icon.png">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fff;
+      --fg: #111;
+      --accent: #FF5C35;
+      --gray: #888;
+      --border: #e8e8e8;
+      --surface: #f5f5f5;
+    }
+
+    body {
+      font-family: 'NanumSquareRound', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.8;
+    }
+
+    header {
+      padding: 1.4rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    .sep { color: var(--border); font-size: 1.1rem; }
+
+    .page-name {
+      font-size: 0.82rem;
+      color: var(--gray);
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem 6rem;
+    }
+
+    .doc-meta {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-meta h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+
+    .doc-meta p {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+
+    .doc-meta p span { color: var(--accent); }
+
+    section { margin-bottom: 2.8rem; }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1.4rem 0 0.6rem;
+    }
+
+    p {
+      font-size: 0.88rem;
+      color: #555;
+      margin-bottom: 0.8rem;
+    }
+
+    ul, ol { padding-left: 1.4rem; margin-bottom: 0.8rem; }
+
+    li {
+      font-size: 0.88rem;
+      color: #555;
+      margin-bottom: 0.3rem;
+    }
+
+    .service-list {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-list li { color: var(--fg); font-size: 0.88rem; }
+    .service-list li span { color: var(--accent); font-size: 0.78rem; margin-left: 0.4rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      margin: 1rem 0;
+    }
+
+    th {
+      background: var(--surface);
+      color: var(--gray);
+      font-weight: 700;
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: #555;
+      vertical-align: top;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .contact-box {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      font-size: 0.88rem;
+      color: #555;
+    }
+
+    .contact-box strong {
+      color: var(--fg);
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 800;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 2.5rem;
+    }
+
+    .footer-biz {
+      max-width: 720px;
+      margin: 0 auto 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer-biz p {
+      font-size: 0.72rem;
+      color: #aaa;
+      line-height: 1.6;
+    }
+
+    .footer-biz strong {
+      color: #888;
+      font-weight: 700;
+    }
+
+    .footer-biz a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    .footer-biz a:hover { color: var(--fg); }
+
+    .footer-bottom {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--gray);
+    }
+
+    @media (max-width: 600px) {
+      header, main, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <a href="/" class="logo"><img src="/nock-logo-concept-4.png" alt="nock"></a>
+  <span class="sep">/</span>
+  <span class="page-name">개인정보처리방침</span>
+</header>
+
+<main>
+  <div class="doc-meta">
+    <h1>개인정보처리방침</h1>
+    <p>시행일자 <span>2026년 5월 4일</span> &nbsp;·&nbsp; 최종 수정일 <span>2026년 5월 4일</span></p>
+  </div>
+
+  <section>
+    <p>노크(대표자: 김연경, 사업자등록번호: 214-73-00603, 이하 "운영자")는 이용자의 개인정보를 소중하게 생각하며, 대한민국 「개인정보 보호법(PIPA)」 및 관련 법령을 준수합니다.</p>
+  </section>
+
+  <section>
+    <h2>적용 서비스</h2>
+    <p>본 방침은 nock.kr 도메인을 통해 제공되는 아래 서비스에 공통 적용됩니다. 새로운 서비스 출시 시 목록이 추가됩니다.</p>
+    <ul class="service-list">
+      <li>노크 순공타이머 <span>timer.nock.kr</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>1. 수집하는 개인정보 항목</h2>
+    <h3>노션(Notion) 연동을 통해 수집되는 정보</h3>
+    <p>서비스는 노션의 공식 OAuth 인증 방식을 통해 이용자 계정 연동을 지원합니다. 이 과정에서 아래 정보가 수집될 수 있습니다.</p>
+    <ul>
+      <li>노션 계정 이름 또는 사용자 이름</li>
+      <li>노션 계정 이메일 주소 (노션이 제공하는 경우)</li>
+      <li>노션 액세스 토큰 (서비스 연동 유지 목적, 서버에 암호화하여 저장)</li>
+    </ul>
+    <p>운영자는 노션 인증 자격증명(비밀번호 등)을 별도로 저장하거나 처리하지 않습니다.</p>
+
+    <h3>서비스 이용 중 자동으로 수집되는 정보</h3>
+    <ul>
+      <li>접속 IP 주소 및 대략적인 위치 정보</li>
+      <li>브라우저 종류 및 버전, 운영체제 정보</li>
+      <li>방문한 페이지, 접속 일시 등의 이용 기록</li>
+      <li>쿠키(Cookie) 및 세션 정보</li>
+    </ul>
+
+    <h3>결제 시 수집되는 정보</h3>
+    <p>유료 기능 이용 시 포트원(PortOne)을 통해 결제가 처리됩니다. 운영자는 카드번호 등 결제 수단 상세 정보를 직접 수집하거나 저장하지 않으며, 결제 완료 여부 및 구독 상태 정보만 관리합니다.</p>
+
+    <h3>기기 내 임시 저장 데이터</h3>
+    <p>서비스는 원활한 이용 경험을 위해 브라우저 캐시 또는 로컬 스토리지에 공부 기록 등 일부 데이터를 임시 저장할 수 있습니다. 이 데이터는 노션으로 전송 후 또는 이용자가 삭제 시 제거됩니다.</p>
+  </section>
+
+  <section>
+    <h2>2. 개인정보의 이용 목적</h2>
+    <ul>
+      <li>노션 계정 연동 및 공부 기록 데이터 노션 전송</li>
+      <li>이용자 식별 및 로그인 상태 유지</li>
+      <li>유료 기능(구독/결제) 관리</li>
+      <li>서비스 품질 개선 및 오류 대응</li>
+      <li>법령상 의무 이행 및 분쟁 대응</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. 개인정보의 보유 및 이용 기간</h2>
+    <table>
+      <tr><th>항목</th><th>보유 기간</th></tr>
+      <tr><td>노션 계정 이름·이메일, 액세스 토큰</td><td>연동 해제 또는 계정 삭제 시 즉시 파기</td></tr>
+      <tr><td>결제 관련 정보 (구독 상태)</td><td>관련 법령에 따라 최대 5년 보관 후 파기</td></tr>
+      <tr><td>접속 로그 기록</td><td>최대 1년 보관 후 파기</td></tr>
+      <tr><td>브라우저 캐시 (임시 데이터)</td><td>이용자 삭제 또는 브라우저 초기화 시 삭제</td></tr>
+    </table>
+    <p>전자상거래 등에서의 소비자보호에 관한 법률에 따라 계약 또는 청약철회 기록은 5년, 소비자 불만 또는 분쟁 처리 기록은 3년간 보관됩니다.</p>
+  </section>
+
+  <section>
+    <h2>4. 개인정보의 제3자 제공</h2>
+    <p>운영자는 원칙적으로 이용자의 개인정보를 외부에 제공하지 않습니다. 다만, 아래의 경우 예외적으로 제공될 수 있습니다.</p>
+    <ul>
+      <li>이용자가 사전에 명시적으로 동의한 경우</li>
+      <li>법령에 따라 요구되거나 수사기관의 적법한 절차에 따른 요청이 있는 경우</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. 개인정보 처리의 위탁</h2>
+    <table>
+      <tr><th>수탁업체</th><th>위탁 목적</th><th>보관 위치</th></tr>
+      <tr><td>Notion Labs, Inc.</td><td>이용자 인증(OAuth) 및 공부 기록 저장</td><td>미국</td></tr>
+      <tr><td>포트원(PortOne)</td><td>결제 처리 및 구독 관리</td><td>대한민국</td></tr>
+      <tr><td>Amazon Web Services (AWS)</td><td>서비스 서버 운영 및 데이터 저장</td><td>대한민국 서울 리전</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>6. 개인정보의 국외 이전</h2>
+    <p>서비스는 노션 OAuth 인증을 사용하므로, 노션 계정 이름·이메일 및 액세스 토큰이 미국 소재 노션 서버로 전송될 수 있습니다.</p>
+    <ul>
+      <li>이전 국가: 미국</li>
+      <li>이전 받는 자: Notion Labs, Inc.</li>
+      <li>이전 목적: 노션 계정 인증 및 공부 기록 저장</li>
+      <li>보호 조치: HTTPS, OAuth 2.0 보안 프로토콜 적용</li>
+    </ul>
+    <p>이용자는 노션의 개인정보 처리에 관한 사항을 <a href="https://www.notion.so/privacy" target="_blank">노션 개인정보처리방침</a>에서 확인할 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>7. 이용자의 권리</h2>
+    <p>이용자는 언제든지 아래의 권리를 행사할 수 있습니다.</p>
+    <ul>
+      <li>본인 개인정보 열람 요청</li>
+      <li>본인 개인정보 정정 요청</li>
+      <li>본인 개인정보 삭제 요청</li>
+      <li>개인정보 처리 정지 요청</li>
+      <li>동의 철회</li>
+    </ul>
+    <p>위 권리 행사는 <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a>으로 요청하실 수 있으며, 운영자는 본인 확인 후 지체 없이 필요한 조치를 취합니다.</p>
+    <p>개인정보 침해 신고·상담: 개인정보 침해신고센터 (privacy.kisa.or.kr / 국번없이 118)</p>
+  </section>
+
+  <section>
+    <h2>8. 쿠키(Cookie) 및 유사 기술</h2>
+    <p>서비스는 로그인 상태 유지, 서비스 기본 기능 제공 및 이용 통계 확인 목적으로 쿠키 및 세션 기술을 사용합니다. 이용자는 브라우저 설정을 통해 쿠키를 거부하거나 삭제할 수 있으나, 이 경우 일부 기능에 제한이 있을 수 있습니다.</p>
+  </section>
+
+  <section>
+    <h2>9. 아동의 개인정보 보호</h2>
+    <p>서비스는 만 14세 미만의 아동을 대상으로 하지 않습니다. 만 14세 미만 아동의 개인정보가 수집된 사실을 인지한 경우, 운영자는 해당 정보를 즉시 삭제합니다.</p>
+  </section>
+
+  <section>
+    <h2>10. 기술적·관리적 보호조치</h2>
+    <ul>
+      <li>HTTPS를 통한 데이터 전송 암호화</li>
+      <li>노션 액세스 토큰 서버 측 암호화 저장</li>
+      <li>접근 권한 최소화 및 관리</li>
+      <li>주기적인 보안 점검</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>11. 개인정보처리방침의 변경</h2>
+    <p>본 방침은 관련 법령, 서비스 내용 변경에 따라 수정될 수 있습니다. 새로운 서비스 추가 또는 중요한 변경 사항이 있을 경우 서비스 내 공지를 통해 안내합니다.</p>
+  </section>
+
+  <section>
+    <h2>12. 문의처</h2>
+    <div class="contact-box">
+      <strong>개인정보보호 책임자</strong>
+      이메일: <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-biz">
+    <p><strong>상호명</strong> 노크 &nbsp;|&nbsp; <strong>대표자</strong> 김연경 &nbsp;|&nbsp; <strong>사업자등록번호</strong> 214-73-00603</p>
+    <p><strong>사업장 주소</strong> 경기도 용인시 기흥구 구성3로 65</p>
+    <p><strong>고객센터</strong> 010-8050-2258 &nbsp;|&nbsp; <strong>이메일</strong> <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a></p>
+  </div>
+  <div class="footer-bottom">© 2026 nock.kr &nbsp;·&nbsp; <a href="/terms" style="color:var(--gray);text-decoration:none;">이용약관</a></div>
+</footer>
+</body>
+</html>
