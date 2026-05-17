@@ -323,6 +323,88 @@
       margin-top: 1rem;
     }
 
+    /* ── Install ── */
+    .install { margin-bottom: 5rem; }
+
+    .install-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .install-tab-btn {
+      font-family: inherit;
+      font-size: 0.83rem;
+      font-weight: 700;
+      padding: 0.45rem 1.1rem;
+      border-radius: 99px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--gray);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .install-tab-btn.active {
+      background: #FD6845;
+      color: #fff;
+      border-color: #FD6845;
+    }
+
+    .install-panel { display: none; }
+    .install-panel.active { display: block; }
+
+    .install-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .install-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.1rem 1.3rem;
+    }
+
+    .install-step-num {
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #FD6845;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .install-step-icon {
+      flex-shrink: 0;
+      color: #FD6845;
+      display: flex;
+      align-items: center;
+      margin-top: 1px;
+    }
+
+    .install-step-icon svg { width: 18px; height: 18px; stroke-width: 1.8; }
+
+    .install-step-text {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--fg);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .install { margin-bottom: 3.5rem; }
+    }
+
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--border);
@@ -462,6 +544,68 @@
       </div>
     </div>
 
+    <div class="install">
+      <div class="section-header">
+        <span class="section-label">앱 설치하기</span>
+        <span class="section-line"></span>
+      </div>
+
+      <div class="install-tabs">
+        <button class="install-tab-btn active" onclick="switchInstallTab(this,'ios')">iOS (Safari)</button>
+        <button class="install-tab-btn" onclick="switchInstallTab(this,'android')">Android (Chrome)</button>
+      </div>
+
+      <div id="install-ios" class="install-panel active">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="install-step-num">1</div>
+            <div class="install-step-icon"><i data-lucide="globe"></i></div>
+            <div class="install-step-text">Safari에서 timerapp.nock.kr 열기</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">2</div>
+            <div class="install-step-icon"><i data-lucide="share"></i></div>
+            <div class="install-step-text">하단 공유 버튼(□↑) 탭</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">3</div>
+            <div class="install-step-icon"><i data-lucide="plus-square"></i></div>
+            <div class="install-step-text">"홈 화면에 추가" 선택</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">4</div>
+            <div class="install-step-icon"><i data-lucide="check"></i></div>
+            <div class="install-step-text">우측 상단 "추가" 탭</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="install-android" class="install-panel">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="install-step-num">1</div>
+            <div class="install-step-icon"><i data-lucide="globe"></i></div>
+            <div class="install-step-text">Chrome에서 timerapp.nock.kr 열기</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">2</div>
+            <div class="install-step-icon"><i data-lucide="more-vertical"></i></div>
+            <div class="install-step-text">우상단 메뉴(⋮) 탭</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">3</div>
+            <div class="install-step-icon"><i data-lucide="plus-square"></i></div>
+            <div class="install-step-text">"홈 화면에 추가" 선택</div>
+          </div>
+          <div class="install-step">
+            <div class="install-step-num">4</div>
+            <div class="install-step-icon"><i data-lucide="check"></i></div>
+            <div class="install-step-text">"추가" 탭</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="pricing">
       <div class="section-header">
         <span class="section-label">Pricing</span>
@@ -511,5 +655,13 @@
     </div>
   </footer>
 
+  <script>
+    function switchInstallTab(btn, tab) {
+      document.querySelectorAll('.install-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.install-tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('install-' + tab).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
 </body>
 </html>
