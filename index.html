@@ -157,6 +157,19 @@
 
     .app-card:hover { background: #efefef; }
 
+    .app-card--disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .app-card--disabled:hover { background: #f5f5f5; }
+
+    .badge--muted {
+      background: #ccc;
+      color: #666;
+    }
+
     .app-icon {
       width: 52px;
       height: 52px;
@@ -285,13 +298,14 @@
     </div>
 
     <div class="apps-grid">
-      <a href="/timer" class="app-card" style="text-decoration:none;">
+      <div class="app-card app-card--disabled" aria-disabled="true">
         <img class="app-icon" src="/timer-icon.png" alt="노크 순공타이머 아이콘">
         <div class="app-info">
           <p class="app-name">순공타이머</p>
           <p class="app-desc">순수 공부 시간을 측정하고 노션에 기록</p>
+          <span class="badge badge--muted">준비 중</span>
         </div>
-      </a>
+      </div>
     </div>
   </main>
 
