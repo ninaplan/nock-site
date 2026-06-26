@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/feedback",
+      "destination": "https://paperlog.notion.site/1aea0117a683440ea5f1432e4842a9ba",
+      "permanent": false
+    }
+  ]
+}
