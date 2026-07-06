@@ -78,7 +78,7 @@ header {
 
 .header-nav a:hover,
 .header-nav a.active {
-  background: var(--accent);
+  background: var(--fg);
   color: #fff;
 }
 
@@ -201,7 +201,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--accent);
+  background: var(--fg);
   color: #fff;
   font-family: inherit;
   font-size: 0.9rem;
@@ -216,11 +216,11 @@ main {
 
 .cta-btn--outline {
   background: transparent;
-  color: var(--accent);
-  border: 1.5px solid var(--accent);
+  color: var(--fg);
+  border: 1.5px solid var(--fg);
 }
 
-.cta-btn--outline:hover { background: var(--accent-muted); }
+.cta-btn--outline:hover { background: var(--card-bg); }
 
 .cta-btn svg {
   width: 16px;
@@ -382,7 +382,7 @@ main {
 .feature-card svg {
   width: 22px;
   height: 22px;
-  color: var(--accent);
+  color: var(--fg);
   margin-bottom: 0.7rem;
   stroke-width: 1.6;
 }
@@ -444,7 +444,7 @@ td {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--fg);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 800;
