@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — 투두x리포트</title>
+  <meta name="description" content="투두x리포트 자주 묻는 질문. 노션 연동, Pro 구독, 데이터 보관, 환불 등.">
+  <link rel="icon" type="image/png" href="/appicon_s.png">
+  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
+  <link rel="stylesheet" href="/todoreport/shared.css">
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <a href="/" class="logo">
+        <img src="/nock-logo-concept-4.png" alt="nock">
+      </a>
+      <span class="sep">/</span>
+      <a href="/todoreport" class="page-name" style="text-decoration:none;color:inherit;">투두x리포트</a>
+    </div>
+    <nav class="header-nav" aria-label="페이지 메뉴">
+      <a href="/todoreport/guide">가이드</a>
+      <a href="/todoreport/faq" class="active">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="page-title">자주 묻는 질문</h1>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>회원가입이 필요한가요?</summary>
+        <div class="faq-answer">
+          <p>아니요. 투두x리포트는 별도의 회원가입·로그인 계정을 제공하지 않아요. 앱을 설치하면 바로 사용할 수 있어요. 노션 연동도 선택 사항이에요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>노션 없이도 사용할 수 있나요?</summary>
+        <div class="faq-answer">
+          <p>네. 온보딩에서 <strong>나중에 하기</strong>를 선택하면 로컬 모드로 시작해요. 데이터는 기기(SwiftData)에만 저장되며, 설정에서 언제든 노션을 연결할 수 있어요.</p>
+          <p>단, 로컬 모드에서는 기기 변경이나 앱 삭제 시 데이터가 손실될 수 있으니 주의해 주세요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>노션 연동은 어떻게 하나요?</summary>
+        <div class="faq-answer">
+          <p>앱 온보딩 또는 설정 탭에서 <strong>노션 연결하기</strong>를 선택하면 Notion OAuth로 인증해요. 이후 플래너 이름, 투두 DB, 데일리리포트 DB를 선택하면 연동이 완료돼요.</p>
+          <p>자세한 단계는 <a href="/todoreport/guide#onboarding">사용 가이드 · 시작하기</a>를 참고해 주세요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>기존 노크 노션 템플릿과 호환되나요?</summary>
+        <div class="faq-answer">
+          <p>대부분의 노크 데일리리포트 스터디 플래너 템플릿 사용자는 바로 연동할 수 있어요. 필요한 속성(별점, 완료율_앱, 메모, 중요 등)이 없으면 앱이 자동으로 추가할 수도 있어요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>데이터는 어디에 저장되나요?</summary>
+        <div class="faq-answer">
+          <p><strong>노션 연동 시:</strong> 투두·리포트 데이터는 노션 DB에 저장되고, 앱은 SwiftData로 캐시하며 백그라운드에서 동기화해요.</p>
+          <p><strong>로컬 모드:</strong> 데이터는 해당 iOS 기기에만 저장돼요. 운영자 서버에 별도로 업로드되지 않아요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Pro 구독과 무료 기능의 차이는 무엇인가요?</summary>
+        <div class="faq-answer">
+          <p><strong>무료:</strong> 플래너 1개, 어제·오늘·내일 투두, 이번 주 주간 리포트, 투두·데일리리포트 기본 기능, Small 위젯 등</p>
+          <p><strong>Pro:</strong> 이전 기간 주간·월간 리포트, 노션에 주간·월간 리포트 저장, 멀티 플래너, 반복 투두, 모든 날짜 조회, Medium·Large 위젯 등</p>
+          <p>상세 비교는 <a href="/todoreport/guide#pro">사용 가이드 · Pro 구독</a>을 참고해 주세요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>구독 결제와 환불은 어떻게 되나요?</summary>
+        <div class="faq-answer">
+          <p>Pro 구독은 Apple 인앱결제(StoreKit)로 처리돼요. 구독 관리·해지는 iOS 설정 → Apple ID → 구독에서 할 수 있어요.</p>
+          <p>환불은 Apple 정책에 따르며, <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a> 또는 Apple 고객지원을 통해 신청할 수 있어요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>기기를 바꿔도 구독이 유지되나요?</summary>
+        <div class="faq-answer">
+          <p>네. Pro 구독은 Apple ID에 연결돼요. 새 기기에서 같은 Apple ID로 앱을 설치한 뒤, 설정 탭에서 <strong>구매 복원</strong>을 실행하면 Pro 기능을 다시 사용할 수 있어요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>구독을 해지하면 데이터는 어떻게 되나요?</summary>
+        <div class="faq-answer">
+          <p>플래너가 2개 이상이면 유지할 플래너 1개를 선택하게 돼요. 투두·리포트 데이터 자체는 삭제되지 않지만, Pro 전용 기능(이전 기간 조회, 멀티 플래너 등)은 이용할 수 없게 돼요. 재구독 시 전체 플래너가 다시 활성화돼요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>위젯은 어떻게 추가하나요?</summary>
+        <div class="faq-answer">
+          <p>iOS 홈 화면을 길게 누른 뒤 왼쪽 상단 <strong>＋</strong> 버튼 → 투두x리포트 위젯을 선택해 추가하면 돼요. Small 위젯(완료율)은 무료, Medium·Large 위젯(투두 목록)은 Pro 기능이에요.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>오류가 발생하면 어떻게 신고하나요?</summary>
+        <div class="faq-answer">
+          <p>설정 탭 → 고객지원 → <strong>오류 신고</strong>를 이용해 주세요. 앱 버전, 기기 정보, 로그가 메일 본문에 자동으로 포함돼요. 또는 <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a>으로 직접 문의하셔도 돼요.</p>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-biz">
+      <p><strong>상호명</strong> 노크 &nbsp;|&nbsp; <strong>대표자</strong> 김연경 &nbsp;|&nbsp; <strong>사업자등록번호</strong> 214-73-00603</p>
+      <p><strong>사업장 주소</strong> 경기도 용인시 기흥구 구성3로 65</p>
+      <p><strong>고객센터</strong> 010-8050-2258 &nbsp;|&nbsp; <strong>이메일</strong> <a href="mailto:nockcreator@gmail.com">nockcreator@gmail.com</a></p>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 nock.kr</p>
+      <nav class="footer-links">
+        <a href="/privacy">개인정보처리방침</a>
+        <a href="/terms">이용약관</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
