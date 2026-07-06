@@ -288,6 +288,9 @@
     <button type="button" class="guide-toc-edge" aria-expanded="false" aria-controls="guide-nav-sheet" aria-label="목차 열기" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
+    <button type="button" class="guide-top-btn" aria-label="맨 위로" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
     <div class="guide-nav-backdrop" hidden></div>
   </main>
 
@@ -311,6 +314,7 @@
     const guideNavSheet = document.getElementById('guide-nav-sheet');
     const guideNavBackdrop = document.querySelector('.guide-nav-backdrop');
     const guideTocEdge = document.querySelector('.guide-toc-edge');
+    const guideTopBtn = document.querySelector('.guide-top-btn');
     const guideNavClose = document.querySelector('.guide-nav-close');
     const mobileNavQuery = window.matchMedia('(max-width: 820px)');
     let inlineNavVisible = true;
@@ -372,6 +376,14 @@
       updateEdgeTab();
     });
 
+    function updateTopBtn() {
+      guideTopBtn.hidden = window.scrollY < 240;
+    }
+
+    guideTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     function updateActiveNav() {
       let current = sections[0]?.id;
       const offset = mobileNavQuery.matches ? 80 : 120;
@@ -382,6 +394,7 @@
         a.classList.toggle('active', a.getAttribute('href') === '#' + current);
       });
       updateEdgeTab();
+      updateTopBtn();
     }
 
     bindMobileNavObserver();
