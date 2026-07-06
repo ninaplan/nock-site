@@ -278,16 +278,23 @@
       </article>
     </div>
 
-    <aside class="guide-nav-sheet" id="guide-nav-sheet" aria-label="앱 사용설명서 목차" aria-hidden="true">
-      <div class="guide-nav-head">
-        <p class="guide-nav-title">목차</p>
-        <button type="button" class="guide-nav-close" aria-label="목차 닫기">✕</button>
+    <div class="guide-toc-drawer" id="guide-toc-drawer" hidden>
+      <div class="guide-toc-drawer-track" id="guide-toc-drawer-track">
+        <button type="button" class="guide-toc-handle" id="guide-toc-handle" aria-expanded="false" aria-controls="guide-nav-sheet" aria-label="목차 열기">
+          <span class="guide-toc-handle-icons" aria-hidden="true">
+            <svg class="guide-toc-handle-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            <svg class="guide-toc-handle-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </span>
+        </button>
+        <aside class="guide-nav-sheet" id="guide-nav-sheet" aria-label="앱 사용설명서 목차" aria-hidden="true">
+          <div class="guide-nav-head">
+            <p class="guide-nav-title">목차</p>
+            <button type="button" class="guide-nav-close" aria-label="목차 닫기">✕</button>
+          </div>
+          <ul></ul>
+        </aside>
       </div>
-      <ul></ul>
-    </aside>
-    <button type="button" class="guide-toc-edge" aria-expanded="false" aria-controls="guide-nav-sheet" aria-label="목차 열기" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-    </button>
+    </div>
     <button type="button" class="guide-top-btn" aria-label="맨 위로" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
@@ -313,11 +320,20 @@
     const guideNavInline = document.getElementById('guide-nav-inline');
     const guideNavSheet = document.getElementById('guide-nav-sheet');
     const guideNavBackdrop = document.querySelector('.guide-nav-backdrop');
-    const guideTocEdge = document.querySelector('.guide-toc-edge');
+    const guideTocDrawer = document.getElementById('guide-toc-drawer');
+    const guideTocTrack = document.getElementById('guide-toc-drawer-track');
+    const guideTocHandle = document.getElementById('guide-toc-handle');
     const guideTopBtn = document.querySelector('.guide-top-btn');
     const guideNavClose = document.querySelector('.guide-nav-close');
     const mobileNavQuery = window.matchMedia('(max-width: 820px)');
     let inlineNavVisible = true;
+    let drawerOpen = false;
+    let drawerOffset = 0;
+    let panelWidth = 0;
+    let dragPointerId = null;
+    let dragStartX = 0;
+    let dragStartOffset = 0;
+    let dragMoved = false;
 
     guideNavSheet.querySelector('ul').innerHTML = guideNavInline.querySelector('ul').innerHTML;
 
@@ -328,53 +344,108 @@
 
     const inlineNavObserver = new IntersectionObserver(([entry]) => {
       inlineNavVisible = entry.isIntersecting;
-      updateEdgeTab();
+      updateDrawerVisibility();
     }, { threshold: 0 });
 
-    function setGuideNavOpen(open) {
-      const isOpen = Boolean(open);
-      guideNavSheet.classList.toggle('is-open', isOpen);
-      guideNavSheet.setAttribute('aria-hidden', String(!isOpen));
-      guideNavBackdrop.hidden = !isOpen;
-      guideTocEdge.setAttribute('aria-expanded', String(isOpen));
-      document.body.classList.toggle('guide-nav-open', isOpen);
-      updateEdgeTab();
+    function measureDrawer() {
+      panelWidth = Math.max(0, guideTocTrack.offsetWidth - guideTocHandle.offsetWidth);
     }
 
-    function updateEdgeTab() {
+    function applyDrawerOffset(offset, animate) {
+      measureDrawer();
+      drawerOffset = Math.max(0, Math.min(panelWidth, offset));
+      guideTocTrack.style.transition = animate ? '' : 'none';
+      guideTocTrack.style.transform = `translateX(${drawerOffset}px)`;
+      const openEnough = drawerOffset < panelWidth * 0.08;
+      guideTocDrawer.classList.toggle('is-open', openEnough);
+      guideNavSheet.setAttribute('aria-hidden', String(!openEnough));
+      guideTocHandle.setAttribute('aria-expanded', String(openEnough));
+      guideNavBackdrop.hidden = !openEnough;
+      document.body.classList.toggle('guide-nav-open', openEnough);
+      drawerOpen = openEnough;
+    }
+
+    function setDrawerOpen(open, animate = true) {
+      measureDrawer();
+      applyDrawerOffset(open ? 0 : panelWidth, animate);
+    }
+
+    function updateDrawerVisibility() {
       if (!mobileNavQuery.matches) {
-        guideTocEdge.hidden = true;
+        guideTocDrawer.hidden = true;
+        setDrawerOpen(false, false);
         return;
       }
-      guideTocEdge.hidden = inlineNavVisible || guideNavSheet.classList.contains('is-open');
+      const shouldShow = !inlineNavVisible;
+      guideTocDrawer.hidden = !shouldShow;
+      if (!shouldShow) {
+        setDrawerOpen(false, false);
+        return;
+      }
+      requestAnimationFrame(() => {
+        if (!drawerOpen) {
+          measureDrawer();
+          applyDrawerOffset(panelWidth, false);
+        }
+      });
     }
+
+    function onDrawerPointerDown(event) {
+      if (!mobileNavQuery.matches || guideTocDrawer.hidden) return;
+      dragPointerId = event.pointerId;
+      dragMoved = false;
+      dragStartX = event.clientX;
+      dragStartOffset = drawerOffset;
+      guideTocTrack.style.transition = 'none';
+      guideTocHandle.setPointerCapture(event.pointerId);
+    }
+
+    function onDrawerPointerMove(event) {
+      if (dragPointerId !== event.pointerId) return;
+      const delta = dragStartX - event.clientX;
+      if (Math.abs(delta) > 4) dragMoved = true;
+      applyDrawerOffset(dragStartOffset - delta, false);
+    }
+
+    function onDrawerPointerUp(event) {
+      if (dragPointerId !== event.pointerId) return;
+      guideTocHandle.releasePointerCapture(event.pointerId);
+      dragPointerId = null;
+      if (!dragMoved) {
+        setDrawerOpen(!drawerOpen, true);
+        return;
+      }
+      setDrawerOpen(drawerOffset < panelWidth * 0.55, true);
+    }
+
+    guideTocHandle.addEventListener('pointerdown', onDrawerPointerDown);
+    guideTocHandle.addEventListener('pointermove', onDrawerPointerMove);
+    guideTocHandle.addEventListener('pointerup', onDrawerPointerUp);
+    guideTocHandle.addEventListener('pointercancel', onDrawerPointerUp);
+
+    guideNavClose.addEventListener('click', () => setDrawerOpen(false));
+    guideNavBackdrop.addEventListener('click', () => setDrawerOpen(false));
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileNavQuery.matches) setDrawerOpen(false);
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && drawerOpen) setDrawerOpen(false);
+    });
+
+    mobileNavQuery.addEventListener('change', () => {
+      setDrawerOpen(false, false);
+      bindMobileNavObserver();
+      updateDrawerVisibility();
+    });
 
     function bindMobileNavObserver() {
       if (mobileNavQuery.matches) inlineNavObserver.observe(guideNavInline);
       else inlineNavObserver.unobserve(guideNavInline);
     }
-
-    guideTocEdge.addEventListener('click', () => setGuideNavOpen(true));
-    guideNavClose.addEventListener('click', () => setGuideNavOpen(false));
-    guideNavBackdrop.addEventListener('click', () => setGuideNavOpen(false));
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (mobileNavQuery.matches) setGuideNavOpen(false);
-      });
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && guideNavSheet.classList.contains('is-open')) {
-        setGuideNavOpen(false);
-      }
-    });
-
-    mobileNavQuery.addEventListener('change', () => {
-      setGuideNavOpen(false);
-      bindMobileNavObserver();
-      updateEdgeTab();
-    });
 
     function updateTopBtn() {
       guideTopBtn.hidden = window.scrollY < 240;
@@ -393,11 +464,15 @@
       navLinks.forEach(a => {
         a.classList.toggle('active', a.getAttribute('href') === '#' + current);
       });
-      updateEdgeTab();
       updateTopBtn();
     }
 
+    window.addEventListener('resize', () => {
+      if (mobileNavQuery.matches) applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
+    });
+
     bindMobileNavObserver();
+    updateDrawerVisibility();
     window.addEventListener('scroll', updateActiveNav, { passive: true });
     updateActiveNav();
   </script>
