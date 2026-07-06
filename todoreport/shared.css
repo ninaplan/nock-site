@@ -273,7 +273,7 @@ main {
 }
 
 .guide-nav-title {
-  font-size: 0.68rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -290,11 +290,11 @@ main {
 
 .guide-nav a {
   display: block;
-  font-size: 0.84rem;
+  font-size: 0.94rem;
   font-weight: 600;
   color: #666;
   text-decoration: none;
-  padding: 0.45rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 8px;
   transition: background 0.12s, color 0.12s;
 }
@@ -312,7 +312,7 @@ main {
 }
 
 .guide-content h2 {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -321,14 +321,14 @@ main {
 }
 
 .guide-content h3 {
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: var(--fg);
   margin: 1.6rem 0 0.7rem;
 }
 
 .guide-content p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
   line-height: 1.75;
   margin-bottom: 0.9rem;
@@ -341,7 +341,7 @@ main {
 }
 
 .guide-content li {
-  font-size: 0.88rem;
+  font-size: 0.98rem;
   color: #555;
   line-height: 1.65;
   margin-bottom: 0.35rem;
@@ -354,12 +354,16 @@ main {
 
 .guide-content a:hover { text-decoration: underline; }
 
+.guide-content table {
+  font-size: 0.94rem;
+}
+
 .tip-box {
   background: var(--accent-soft);
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  font-size: 0.86rem;
+  font-size: 0.96rem;
   color: #555;
   line-height: 1.65;
 }
@@ -439,26 +443,45 @@ td {
   padding: 1rem 1.1rem;
 }
 
-.flow-step-num {
+.flow-step-icon {
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--fg);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 800;
+  width: 18px;
+  margin-top: 0.35rem;
+  color: var(--fg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.flow-step-icon svg {
+  width: 8px;
+  height: 8px;
+}
+
+.flow-step-body {
+  flex: 1;
+  min-width: 0;
+}
+
 .flow-step p {
   margin: 0;
-  font-size: 0.86rem;
-  font-weight: 600;
+  font-size: 0.96rem;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.65;
+}
+
+.flow-step p strong {
+  font-weight: 700;
   color: var(--fg);
-  line-height: 1.5;
+}
+
+.flow-step-note {
+  margin-top: 0.55rem;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: #888;
+  line-height: 1.6;
 }
 
 .pricing-cards {
@@ -486,7 +509,7 @@ td {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .pricing-card.featured .plan-name { color: rgba(255,255,255,0.55); }
