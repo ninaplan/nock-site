@@ -296,15 +296,14 @@ main {
   text-decoration: none;
   padding: 0.45rem 0.75rem;
   border-radius: 8px;
-  border-left: 2px solid transparent;
-  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  transition: background 0.12s, color 0.12s;
 }
 
 .guide-nav a:hover,
 .guide-nav a.active {
   background: var(--accent-muted);
   color: var(--accent);
-  border-left-color: var(--accent);
+  font-weight: 700;
 }
 
 .guide-content section {

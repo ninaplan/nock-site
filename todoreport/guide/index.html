@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>사용 가이드 — 투두x리포트</title>
+  <title>앱 사용설명서 — 투두x리포트</title>
   <meta name="description" content="투두x리포트 앱 사용 설명서. 투두 기록, 데일리·주간·월간 리포트, 노션 연동, Pro 구독 안내.">
   <link rel="icon" type="image/png" href="/appicon_s.png">
   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-round.css" rel="stylesheet">
@@ -23,21 +23,22 @@
       <a href="/todoreport" class="page-name" style="text-decoration:none;color:inherit;">투두x리포트</a>
     </div>
     <nav class="header-nav" aria-label="페이지 메뉴">
-      <a href="/todoreport/guide" class="active">가이드</a>
+      <a href="/todoreport/guide" class="active">앱 사용설명서</a>
       <a href="/todoreport/faq">FAQ</a>
     </nav>
   </header>
 
   <main>
-    <h1 class="page-title">앱 사용 가이드</h1>
+    <h1 class="page-title">앱 사용설명서</h1>
 
     <div class="guide-layout">
-      <aside class="guide-nav" aria-label="앱 사용방법">
+      <aside class="guide-nav" aria-label="앱 사용설명서">
         <p class="guide-nav-title">목차</p>
         <ul>
           <li><a href="#intro">앱 소개</a></li>
-          <li><a href="#onboarding">시작하기 · 온보딩</a></li>
+          <li><a href="#onboarding">시작하기</a></li>
           <li><a href="#todo-tab">투두 탭</a></li>
+          <li><a href="#quick-capture">빠른 캡처</a></li>
           <li><a href="#daily-report">데일리 리포트</a></li>
           <li><a href="#report-tab">리포트 탭</a></li>
           <li><a href="#category">카테고리</a></li>
@@ -51,22 +52,22 @@
 
         <section id="intro">
           <h2>앱 소개</h2>
-          <p>투두x리포트는 <strong>앱에서 기록하고, 노션에 쌓아가는</strong> 할일·리포트 앱이에요. 통계와 리포트도 노션 DB에 저장할 수 있어요.</p>
+          <p>투두x리포트는 <strong>앱에서 기록하고, 노션에 쌓아가는</strong> 할일·리포트 앱이에요. 노션 연동 없이도 앱만으로 모든 기능을 쓸 수 있고, 원하면 노션 DB에 자동으로 동기화할 수 있어요.</p>
           <div class="feature-grid">
             <div class="feature-card">
               <i data-lucide="check-square"></i>
               <p>투두 기록</p>
-              <span>할일 작성·완료·메모를 앱에서 빠르게 처리하고 노션 투두 DB에 저장</span>
+              <span>할일 작성·완료·메모·알림. 노션 연결 시 투두 DB에 자동 저장</span>
             </div>
             <div class="feature-card">
               <i data-lucide="notebook-pen"></i>
               <p>데일리 리포트</p>
-              <span>하루 리뷰, 별점, 완료율을 기록하고 노션 데일리리포트 DB에 저장</span>
+              <span>완료율, 별점, 하루 리뷰를 기록하고 노션 데일리리포트 DB에 저장</span>
             </div>
             <div class="feature-card">
               <i data-lucide="bar-chart-2"></i>
               <p>주간·월간 리포트</p>
-              <span>완료율·별점·카테고리 달성률을 그래프로 확인하고 노션에 저장</span>
+              <span>기간별 완료율·별점·카테고리 달성률 조회. Pro에서 노션 저장</span>
             </div>
             <div class="feature-card">
               <i data-lucide="layers"></i>
@@ -74,59 +75,59 @@
               <span>플래너 1개 = 투두 DB + 데일리리포트 DB 묶음. Pro에서 무제한</span>
             </div>
           </div>
-          <p>앱은 <strong>투두 · 리포트 · 설정</strong> 3개 탭으로 구성돼요.</p>
+          <p>앱은 <strong>투두 · 리포트 · 설정</strong> 3개 탭으로 구성돼요. 별도 회원가입 없이 설치 후 바로 사용할 수 있어요.</p>
+          <div class="tip-box">
+            <strong>Offline-First.</strong> 모든 기록은 먼저 기기(SwiftData)에 저장되고, 노션 연결 시 백그라운드에서 동기화돼요. 인터넷이 없어도 앱에서 기록할 수 있어요.
+          </div>
         </section>
 
         <section id="onboarding">
-          <h2>시작하기 · 온보딩</h2>
-          <p>별도 앱 계정 없이 바로 시작할 수 있어요. 노션 연동은 선택 사항이에요.</p>
+          <h2>시작하기</h2>
+          <p>앱을 처음 열면 5페이지 웰컴 소개가 나와요. 마지막 페이지에서 노션 연결 여부를 선택합니다.</p>
           <div class="flow-steps">
             <div class="flow-step">
               <span class="flow-step-num">1</span>
-              <p>앱 소개 화면을 확인한 뒤, 노션 연결 또는 나중에 하기를 선택해요.</p>
+              <p>웰컴 소개를 확인한 뒤 <strong>노션 연결하기</strong> 또는 <strong>나중에 연결하기</strong>를 선택해요.</p>
             </div>
             <div class="flow-step">
               <span class="flow-step-num">2</span>
-              <p><strong>노션 연결하기</strong> — Notion OAuth로 연결하고, 플래너 이름·투두 DB·데일리리포트 DB를 선택해요.</p>
+              <p><strong>노션 연결하기</strong> — Notion OAuth로 인증하고, 플래너 이름·투두 DB·데일리리포트 DB를 선택해요. 필요한 속성(별점, 완료율_앱, 메모, 중요 등)이 없으면 자동으로 추가할 수 있어요.</p>
             </div>
             <div class="flow-step">
               <span class="flow-step-num">3</span>
-              <p><strong>나중에 하기</strong> — 데이터가 기기에만 저장되는 로컬 모드로 시작해요. 설정에서 언제든 노션 연결이 가능해요.</p>
+              <p><strong>나중에 연결하기</strong> — 로컬 모드로 시작해요. 데이터는 이 기기에만 저장되며, 설정에서 언제든 노션을 연결할 수 있어요.</p>
             </div>
-          </div>
-          <div class="tip-box">
-            <strong>Tip.</strong> 노션 연결 시 필요한 속성(별점, 완료율_앱, 메모, 중요 등)이 없으면 앱이 자동으로 추가할 수 있어요. 기존 노크 템플릿 사용자는 대부분 바로 사용할 수 있어요.
           </div>
           <h3>노션 연동 후 데이터는 어디에?</h3>
           <ul>
-            <li>노션 사용자 — 투두·리포트는 노션 DB에 저장, 앱은 SwiftData 캐시 + 백그라운드 동기화</li>
-            <li>로컬 사용자 — SwiftData에만 저장. 기기 변경·앱 삭제 시 데이터 손실 주의</li>
-            <li>구독(Pro)은 Apple ID에 연결 — 기기 변경 후에도 구매 복원 가능</li>
+            <li><strong>노션 사용자</strong> — 투두·리포트는 노션 DB에 저장, 앱은 SwiftData 캐시 + 백그라운드 동기화</li>
+            <li><strong>로컬 사용자</strong> — SwiftData에만 저장. 기기 변경·앱 삭제 시 데이터 손실에 주의</li>
+            <li><strong>Pro 구독</strong> — Apple ID에 연결. 기기 변경 후 구매 복원 가능</li>
           </ul>
+          <div class="tip-box">
+            <strong>Tip.</strong> 노크 데일리리포트 스터디 플래너 등 기존 노크 템플릿 사용자는 대부분 바로 연동할 수 있어요.
+          </div>
         </section>
 
         <section id="todo-tab">
           <h2>투두 탭</h2>
-          <p>선택한 날짜의 할일과 데일리 리포트를 한 화면에서 관리해요.</p>
+          <p>선택한 날짜의 할일과 데일리 리포트를 한 화면에서 관리해요. 상단에서 플래너를 전환할 수 있어요.</p>
 
           <h3>할일 추가 · 편집</h3>
           <ul>
-            <li>목록 하단 <strong>+ 투두 추가</strong> 또는 우하단 플로팅 <strong>＋</strong> 버튼(빠른 캡처)으로 추가</li>
+            <li>목록 하단 <strong>+ 투두 추가</strong> 또는 우하단 플로팅 <strong>＋</strong> 버튼으로 추가</li>
             <li>할일 이름, 메모, 카테고리, 날짜, 시간·알림 설정 가능</li>
-            <li>체크박스 탭으로 완료/미완료 전환 — 노션에 실시간 반영</li>
-            <li>길게 누르기로 편집, 스와이프로 내일하기·날짜변경·삭제·고정(중요)</li>
+            <li>체크박스 탭으로 완료/미완료 전환 — 노션 연결 시 백그라운드 동기화</li>
+            <li>길게 누르기로 편집, 스와이프로 내일하기·날짜변경·삭제, 오른쪽 풀스와이프로 중요(고정) 표시</li>
           </ul>
 
           <h3>날짜 이동</h3>
-          <table>
-            <thead>
-              <tr><th>동작</th><th>무료</th><th>Pro</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>어제 · 오늘 · 내일</td><td>✅</td><td>✅</td></tr>
-              <tr><td>그 외 날짜 (좌우 탭·달력)</td><td>❌</td><td>✅</td></tr>
-            </tbody>
-          </table>
+          <p>모든 날짜를 자유롭게 이동할 수 있어요 (무료).</p>
+          <ul>
+            <li>날짜 좌·우 공간 탭 — 하루씩 이동</li>
+            <li>날짜 텍스트 탭 — 달력 피커</li>
+            <li>날짜만 바꿀 때는 로컬 DB만 조회해요. 노션에서 가져오는 시점은 앱 실행·포그라운드 복귀·당겨서 새로고침·플래너 전환 때예요</li>
+          </ul>
 
           <h3>보기 옵션 (☰)</h3>
           <ul>
@@ -135,48 +136,76 @@
             <li><strong>정렬 옵션</strong> — 추가한 순서 / 카테고리순 / 완료 먼저</li>
           </ul>
           <p>상단 카테고리 칩으로 필터링할 수 있어요. 선택된 카테고리 기준으로 완료율이 계산돼요.</p>
+
+          <h3>시간 지정 · 알림</h3>
+          <ul>
+            <li>투두 추가/편집에서 <strong>시간 추가</strong> 토글로 시간 설정</li>
+            <li>알림: 정시 / 5분 전 / 10분 전 / 30분 전 / 1시간 전 / 1일 전</li>
+            <li>노션 날짜 속성에 시간 포함 저장 (시간 없는 기존 투두는 날짜만 유지)</li>
+          </ul>
+        </section>
+
+        <section id="quick-capture">
+          <h2>빠른 캡처</h2>
+          <p>모든 화면 우하단의 플로팅 <strong>＋</strong> 버튼을 탭하면 바텀 시트가 열려요.</p>
+          <ul>
+            <li>할일 이름(필수), 메모, 카테고리, 날짜(기본: 오늘) 입력</li>
+            <li>저장하면 SwiftData에 즉시 반영 → 화면 바로 업데이트</li>
+            <li>노션 연결 플래너면 백그라운드에서 노션 전송</li>
+            <li><strong>반복 설정</strong>은 Pro 기능이에요</li>
+          </ul>
         </section>
 
         <section id="daily-report">
           <h2>데일리 리포트</h2>
-          <p>투두 탭 상단 카드에서 오늘(선택 날짜)의 리포트를 작성해요.</p>
+          <p>투두 탭 상단 카드에서 선택 날짜의 리포트를 작성해요.</p>
           <ul>
-            <li><strong>하루 리뷰</strong> — 오늘을 돌아보는 짧은 메모</li>
-            <li><strong>별점</strong> — ⭐~⭐⭐⭐⭐⭐ (기분·성취도 등 용도는 자유)</li>
             <li><strong>완료율</strong> — 선택된 카테고리 필터 기준으로 자동 계산</li>
+            <li><strong>별점</strong> — ⭐~⭐⭐⭐⭐⭐ (기분·성취도 등 용도는 자유)</li>
+            <li><strong>하루 리뷰</strong> — 오늘을 돌아보는 짧은 메모</li>
           </ul>
-          <p>저장하면 노션 데일리리포트 DB에 <em>M월 d일 (요일) 리포트</em> 형식으로 기록돼요.</p>
+          <p>노션 연결 시 데일리리포트 DB에 <em>M월 d일 (요일) 리포트</em> 형식으로 저장돼요.</p>
         </section>
 
         <section id="report-tab">
           <h2>리포트 탭</h2>
           <p>주간·월간 단위로 완료율, 별점 흐름, 카테고리별 달성률, 하루 리뷰 타임라인을 확인해요.</p>
 
-          <h3>무료로 볼 수 있는 것</h3>
+          <h3>조회 (무료)</h3>
           <ul>
-            <li>이번 주 주간 리포트 (완료율·별점·카테고리 그래프)</li>
+            <li>이번 주·이번 달 리포트 — 완료율·별점·카테고리 그래프</li>
+            <li>이전 주·이전 달 리포트 조회도 무료</li>
             <li>하루 리뷰 타임라인 — 날짜 행 탭 시 투두 탭 해당 날짜로 이동</li>
-            <li>연속 달성(Streak) — 어제까지 연속 달성 일수</li>
+            <li>연속 달성(Streak) — 어제까지 연속 달성 일수 (설정에서 기준 변경 가능)</li>
           </ul>
 
-          <h3>Pro 기능</h3>
+          <h3>노션에 저장하기 (Pro)</h3>
           <ul>
-            <li>이전 주·이전 달 기간 조회</li>
-            <li>월간 리포트 전체</li>
             <li><strong>노션에 리포트 저장하기</strong> — 주간/월간 통계·리뷰를 노션 페이지로 저장</li>
+            <li>저장 시트에서 기간 리뷰 입력, 저장 알림(리마인더) 설정 가능</li>
+            <li>변경사항이 없으면 노션 API를 호출하지 않아요</li>
           </ul>
-          <div class="tip-box">
-            <strong>노션 저장.</strong> 저장 시트에서 기간 리뷰를 입력하고, 저장 알림(리마인더)도 설정할 수 있어요. 변경사항이 없으면 노션 API를 호출하지 않아요.
-          </div>
+
+          <h3>연속 달성 기준 (설정 &gt; 환경 설정)</h3>
+          <table>
+            <thead>
+              <tr><th>기준</th><th>설명</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>중요 할 일 모두 완료</td><td>중요(고정) 표시한 할 일이 있으면 전부 완료. 없으면 달성 처리</td></tr>
+              <tr><td>전체 할 일 완료 (기본)</td><td>그날 투두가 1개 이상이면 전부 완료해야 달성</td></tr>
+              <tr><td>할 일 1개 이상 완료</td><td>하루에 하나라도 체크하면 달성</td></tr>
+            </tbody>
+          </table>
         </section>
 
         <section id="category">
           <h2>카테고리</h2>
-          <p>설정 탭에서 카테고리를 추가·편집·보관할 수 있어요. 앱 전용 기능이며, 플래너별로 관리돼요.</p>
+          <p>설정 탭에서 카테고리를 추가·편집·보관할 수 있어요. 플래너별로 관리돼요.</p>
           <ul>
-            <li>색상·아이콘(SF Symbol) 커스터마이즈</li>
+            <li>색상·아이콘(SF Symbol) 커스터마이즈 — 기본 색상은 노크 오렌지</li>
             <li>투두 목록·리포트에서 카테고리별 달성률 확인</li>
-            <li>노션 연동 플래너 — 투두 DB select/status 옵션과 이름 기준 자동 동기화</li>
+            <li>노션 연동 시 투두 DB select/status 옵션과 이름 기준 자동 동기화</li>
           </ul>
           <h3>삭제 vs 보관 (노션 연동 시)</h3>
           <table>
@@ -192,22 +221,26 @@
 
         <section id="widget">
           <h2>홈 화면 위젯</h2>
-          <p>iOS 홈 화면 위젯으로 오늘의 완료율과 투두 목록을 확인할 수 있어요.</p>
+          <p>iOS 홈 화면 위젯으로 오늘의 완료율과 투두 목록을 확인할 수 있어요. Small·Medium·Large 모두 무료예요.</p>
           <table>
             <thead>
-              <tr><th>위젯</th><th>무료</th><th>Pro</th></tr>
+              <tr><th>위젯</th><th>내용</th></tr>
             </thead>
             <tbody>
-              <tr><td>Small — 오늘 완료율</td><td>✅</td><td>✅</td></tr>
-              <tr><td>Medium · Large — 투두 목록</td><td>❌</td><td>✅</td></tr>
+              <tr><td>Small (2×2)</td><td>오늘 완료율, 진행 바, 플래너명</td></tr>
+              <tr><td>Medium (4×2)</td><td>완료율 + 투두 목록 (최대 4개)</td></tr>
+              <tr><td>Large (4×4)</td><td>완료율 + 투두 목록 (최대 8개, 중요 항목 우선)</td></tr>
             </tbody>
           </table>
           <p>위젯 탭 시 앱 투두 탭·오늘 날짜로 열려요. 완료율은 오늘 전체 투두 기준으로 계산돼요.</p>
+          <div class="tip-box">
+            <strong>추후 업데이트.</strong> 위젯에서 체크박스 완료 처리, ＋ 버튼으로 빠른 캡처는 Pro 전용으로 준비 중이에요.
+          </div>
         </section>
 
         <section id="pro">
           <h2>Pro 구독</h2>
-          <p>Apple IAP(StoreKit 2)로 구독해요. 설정 탭에서 구매 복원·구독 관리가 가능해요.</p>
+          <p>Apple 인앱결제(StoreKit 2)로 구독해요. 설정 탭에서 구매 복원·구독 관리가 가능해요.</p>
 
           <div class="pricing-cards">
             <div class="pricing-card">
@@ -216,10 +249,10 @@
               <p class="plan-period">기본 기능 영구 무료</p>
               <ul class="plan-features">
                 <li>플래너 1개</li>
-                <li>어제·오늘·내일 투두</li>
-                <li>이번 주 주간 리포트</li>
+                <li>모든 날짜 투두 조회·기록</li>
+                <li>주간·월간 리포트 조회</li>
                 <li>투두·데일리리포트·카테고리</li>
-                <li>Small 위젯 (완료율)</li>
+                <li>홈 화면 위젯 (Small·Medium·Large)</li>
               </ul>
             </div>
             <div class="pricing-card featured">
@@ -227,11 +260,10 @@
               <p class="plan-price">₩4,900</p>
               <p class="plan-period">/ 월 · 연 ₩33,000</p>
               <ul class="plan-features">
-                <li>이전 기간 주간·월간 리포트</li>
                 <li>노션에 주간·월간 리포트 저장</li>
-                <li>멀티 플래너 · 반복 투두</li>
-                <li>모든 날짜 조회</li>
-                <li>Medium·Large 위젯</li>
+                <li>멀티 플래너 (무제한)</li>
+                <li>반복 투두</li>
+                <li>위젯 인터랙션 (준비 중)</li>
               </ul>
             </div>
           </div>
@@ -242,8 +274,8 @@
           <h2>설정 · 고객지원</h2>
           <p>설정 탭에서 플래너 관리, 환경 설정, 구독, 고객지원 메뉴를 확인할 수 있어요.</p>
           <ul>
-            <li><strong>플래너</strong> — 추가·전환·노션 연동 설정 (Pro: 무제한)</li>
-            <li><strong>환경 설정</strong> — 주간 시작 요일, 연속 달성 기준, 시스템 알림 권한</li>
+            <li><strong>플래너</strong> — 추가·전환·노션 연동 설정 (Pro: 무제한). 로컬 플래너도 나중에 노션 연결 가능</li>
+            <li><strong>환경 설정</strong> — 주간 시작 요일, 연속 달성 기준, 외관 모드(시스템/라이트/다크), 시스템 알림 권한</li>
             <li><strong>고객지원</strong> — <a href="/privacy">개인정보처리방침</a>, <a href="/terms">이용약관</a>, 오류 신고</li>
           </ul>
           <p>오류 신고 시 앱 버전·기기 정보·로그가 메일 본문에 자동 포함돼요. (nockcreator@gmail.com)</p>
