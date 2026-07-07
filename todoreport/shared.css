@@ -69,11 +69,11 @@ header {
 }
 
 .header-nav a {
-  font-size: var(--font-nav);
+  font-size: var(--font-base);
   font-weight: 700;
   color: var(--gray);
   text-decoration: none;
-  padding: 0.45rem 1rem;
+  padding: 0.38rem 0.85rem;
   border-radius: 99px;
   transition: background 0.15s, color 0.15s;
 }
@@ -277,6 +277,10 @@ main {
 }
 
 /* ── Guide ── */
+main:has(.guide-layout) > .page-title {
+  font-size: 1.35rem;
+}
+
 .page-title {
   font-size: var(--font-page-title);
   font-weight: 800;
@@ -385,7 +389,7 @@ main {
 
 .guide-nav-sheet a {
   display: block;
-  font-size: var(--font-base-plus);
+  font-size: var(--font-md-plus);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -421,7 +425,7 @@ body.guide-nav-open {
 
 .guide-nav a {
   display: block;
-  font-size: var(--font-base-plus);
+  font-size: var(--font-md-plus);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -443,7 +447,7 @@ body.guide-nav-open {
 }
 
 .guide-content h2 {
-  font-size: var(--font-sub-h2);
+  font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -452,14 +456,14 @@ body.guide-nav-open {
 }
 
 .guide-content h3 {
-  font-size: var(--font-sub-h3);
+  font-size: var(--font-base-plus);
   font-weight: 800;
   color: var(--fg);
   margin: 1.6rem 0 0.7rem;
 }
 
 .guide-content p {
-  font-size: var(--font-body-plus);
+  font-size: var(--font-base);
   color: #555;
   line-height: 1.75;
   margin-bottom: 0.9rem;
@@ -472,7 +476,7 @@ body.guide-nav-open {
 }
 
 .guide-content li {
-  font-size: var(--font-body);
+  font-size: var(--font-base);
   color: #555;
   line-height: 1.65;
   margin-bottom: 0.35rem;
@@ -486,7 +490,7 @@ body.guide-nav-open {
 .guide-content a:hover { text-decoration: underline; }
 
 .guide-content table {
-  font-size: var(--font-base-plus);
+  font-size: var(--font-md-plus);
 }
 
 .tip-box {
@@ -494,7 +498,7 @@ body.guide-nav-open {
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  font-size: var(--font-body-sm);
+  font-size: var(--font-md-plus);
   color: #555;
   line-height: 1.65;
 }
@@ -596,7 +600,7 @@ td {
 
 .flow-step p {
   margin: 0;
-  font-size: var(--font-body-sm);
+  font-size: var(--font-md-plus);
   font-weight: 400;
   color: #555;
   line-height: 1.65;
@@ -609,7 +613,7 @@ td {
 
 .flow-step-note {
   margin-top: 0.55rem;
-  font-size: var(--font-base);
+  font-size: var(--font-sm-plus);
   font-weight: 400;
   color: #888;
   line-height: 1.6;
@@ -1014,5 +1018,5 @@ footer {
   header, main, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   main { padding-top: 3rem; }
   .guide-nav ul { grid-template-columns: 1fr; }
-  .header-nav a { font-size: var(--font-md-plus); padding: 0.45rem 0.9rem; }
+  .header-nav a { font-size: var(--font-sm-plus); padding: 0.38rem 0.75rem; }
 }
