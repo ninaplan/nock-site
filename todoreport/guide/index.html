@@ -347,17 +347,28 @@
     }, { threshold: 0 });
 
     function measureDrawer() {
-      if (guideTocDrawer.hidden) return false;
-      const width = guideTocTrack.offsetWidth - guideTocHandle.offsetWidth;
-      if (width > 0) panelWidth = width;
+      if (guideTocDrawer.hidden) return panelWidth > 0;
+
+      const sheetW = guideNavSheet.offsetWidth;
+      const handleW = guideTocHandle.offsetWidth;
+      if (sheetW > 0) panelWidth = sheetW;
+      else if (handleW > 0) panelWidth = Math.max(panelWidth, Math.min(268, window.innerWidth * 0.74));
+
+      return panelWidth > 0;
+    }
+
+    function ensurePanelWidth() {
+      if (measureDrawer()) return true;
+      void guideTocTrack.offsetWidth;
+      if (measureDrawer()) return true;
+      panelWidth = Math.min(268, window.innerWidth * 0.74);
       return panelWidth > 0;
     }
 
     function applyDrawerOffset(offset, animate) {
-      const ready = measureDrawer();
-      if (!ready) {
+      if (!ensurePanelWidth()) {
         guideTocTrack.style.transition = 'none';
-        guideTocTrack.style.transform = 'translateX(100%)';
+        guideTocTrack.style.removeProperty('transform');
         return;
       }
 
@@ -374,21 +385,26 @@
     }
 
     function setDrawerOpen(open, animate = true) {
-      if (!measureDrawer()) {
-        layoutDrawerClosed();
+      if (!ensurePanelWidth()) {
+        scheduleDrawerLayout();
         return;
       }
       applyDrawerOffset(open ? 0 : panelWidth, animate);
     }
 
-    function layoutDrawerClosed() {
+    function scheduleDrawerLayout(attempts = 8) {
+      if (guideTocDrawer.hidden || drawerOpen || attempts <= 0) return;
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          if (guideTocDrawer.hidden || drawerOpen) return;
-          if (!measureDrawer()) return;
+        if (ensurePanelWidth()) {
           applyDrawerOffset(panelWidth, false);
-        });
+          return;
+        }
+        scheduleDrawerLayout(attempts - 1);
       });
+    }
+
+    function layoutDrawerClosed() {
+      scheduleDrawerLayout();
     }
 
     function syncInlineNavVisible() {
@@ -414,11 +430,12 @@
 
     function onDrawerPointerDown(event) {
       if (!mobileNavQuery.matches || guideTocDrawer.hidden) return;
-      measureDrawer();
+      event.preventDefault();
+      ensurePanelWidth();
       dragPointerId = event.pointerId;
       dragMoved = false;
       dragStartX = event.clientX;
-      dragStartOffset = drawerOffset;
+      dragStartOffset = drawerOpen ? 0 : panelWidth;
       guideTocTrack.style.transition = 'none';
       guideTocHandle.setPointerCapture(event.pointerId);
     }
@@ -434,8 +451,8 @@
       if (dragPointerId !== event.pointerId) return;
       guideTocHandle.releasePointerCapture(event.pointerId);
       dragPointerId = null;
-      if (!measureDrawer()) {
-        layoutDrawerClosed();
+      if (!ensurePanelWidth()) {
+        scheduleDrawerLayout();
         return;
       }
       if (!dragMoved) {
@@ -495,17 +512,17 @@
     }
 
     window.addEventListener('resize', () => {
-      if (!mobileNavQuery.matches || guideTocDrawer.hidden) return;
-      if (!measureDrawer()) return;
+      if (!mobileNavQuery.matches || guideTocDrawer.hidden || dragPointerId !== null) return;
+      if (!ensurePanelWidth()) return;
       applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
     });
 
     const drawerResizeObserver = new ResizeObserver(() => {
-      if (guideTocDrawer.hidden) return;
-      if (!measureDrawer()) return;
+      if (guideTocDrawer.hidden || dragPointerId !== null) return;
+      if (!ensurePanelWidth()) return;
       applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
     });
-    drawerResizeObserver.observe(guideTocTrack);
+    drawerResizeObserver.observe(guideNavSheet);
 
     syncInlineNavVisible();
     bindMobileNavObserver();
@@ -514,7 +531,15 @@
       syncInlineNavVisible();
       updateDrawerVisibility();
     });
-    window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+    let scrollRaf = 0;
+    window.addEventListener('scroll', () => {
+      if (scrollRaf) return;
+      scrollRaf = requestAnimationFrame(() => {
+        updateActiveNav();
+        scrollRaf = 0;
+      });
+    }, { passive: true });
     updateActiveNav();
   </script>
 </body>

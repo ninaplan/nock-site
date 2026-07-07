@@ -111,7 +111,7 @@ main {
 }
 
 .hero-desc {
-  font-size: var(--font-body-plus);
+  font-size: var(--font-content-body);
   color: #6a6a6a;
   line-height: 1.8;
   max-width: 480px;
@@ -200,7 +200,7 @@ main {
 }
 
 .feature-desc {
-  font-size: var(--font-md);
+  font-size: var(--font-content-body);
   color: #777;
   line-height: 1.65;
 }

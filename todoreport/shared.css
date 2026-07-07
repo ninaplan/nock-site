@@ -34,6 +34,7 @@ header {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+  background: var(--bg);
 }
 
 .header-left {
@@ -75,7 +76,9 @@ header {
   text-decoration: none;
   padding: 0.38rem 0.85rem;
   border-radius: 99px;
-  transition: background 0.15s, color 0.15s;
+  transition: background-color 0.1s ease, color 0.1s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .header-nav a:hover,
@@ -168,7 +171,7 @@ main {
 .notion-badge svg { width: 14px; height: 14px; stroke-width: 1.5; }
 
 .hero-desc {
-  font-size: var(--font-body-plus);
+  font-size: var(--font-content-body);
   color: #6a6a6a;
   line-height: 1.8;
   max-width: 520px;
@@ -277,12 +280,8 @@ main {
 }
 
 /* ── Guide ── */
-main:has(.guide-layout) > .page-title {
-  font-size: 1.48rem;
-}
-
 .page-title {
-  font-size: var(--font-page-title);
+  font-size: var(--font-content-title);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 2.5rem;
@@ -389,7 +388,7 @@ main:has(.guide-layout) > .page-title {
 
 .guide-nav-sheet a {
   display: block;
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -425,7 +424,7 @@ body.guide-nav-open {
 
 .guide-nav a {
   display: block;
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -447,7 +446,7 @@ body.guide-nav-open {
 }
 
 .guide-content h2 {
-  font-size: 1.35rem;
+  font-size: var(--font-content-h2);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -456,14 +455,14 @@ body.guide-nav-open {
 }
 
 .guide-content h3 {
-  font-size: var(--font-body-plus);
+  font-size: var(--font-content-h3);
   font-weight: 800;
   color: var(--fg);
   margin: 1.6rem 0 0.7rem;
 }
 
 .guide-content p {
-  font-size: var(--font-body-sm);
+  font-size: var(--font-content-body);
   color: #555;
   line-height: 1.75;
   margin-bottom: 0.9rem;
@@ -476,7 +475,7 @@ body.guide-nav-open {
 }
 
 .guide-content li {
-  font-size: var(--font-nav);
+  font-size: var(--font-content-list);
   color: #555;
   line-height: 1.65;
   margin-bottom: 0.35rem;
@@ -490,7 +489,7 @@ body.guide-nav-open {
 .guide-content a:hover { text-decoration: underline; }
 
 .guide-content table {
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
 }
 
 .tip-box {
@@ -498,7 +497,7 @@ body.guide-nav-open {
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   color: #555;
   line-height: 1.65;
 }
@@ -600,7 +599,7 @@ td {
 
 .flow-step p {
   margin: 0;
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   font-weight: 400;
   color: #555;
   line-height: 1.65;
@@ -705,7 +704,7 @@ td {
 }
 
 .faq-item summary {
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   font-weight: 700;
   color: var(--fg);
   padding: 1.1rem 1.3rem;
@@ -734,7 +733,7 @@ td {
 
 .faq-answer {
   padding: 0 1.3rem 1.2rem;
-  font-size: var(--font-md-plus);
+  font-size: var(--font-content-body);
   color: #555;
   line-height: 1.75;
 }
@@ -751,7 +750,7 @@ td {
 
 /* ── Support ── */
 .support-intro {
-  font-size: var(--font-nav);
+  font-size: var(--font-content-body);
   color: #666;
   line-height: 1.7;
   margin: -0.5rem 0 1.8rem;
@@ -816,13 +815,13 @@ a.support-card:hover {
 }
 
 .support-card-body strong {
-  font-size: var(--font-base);
+  font-size: var(--font-content-caption);
   font-weight: 800;
   color: var(--fg);
 }
 
 .support-card-body span {
-  font-size: var(--font-md);
+  font-size: var(--font-content-body);
   color: #666;
   line-height: 1.6;
 }
@@ -933,7 +932,7 @@ footer {
     display: flex;
     align-items: stretch;
     pointer-events: auto;
-    transform: translateX(100%);
+    transform: translateX(calc(100% - 40px));
     transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
     will-change: transform;
   }

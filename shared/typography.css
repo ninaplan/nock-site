@@ -22,4 +22,12 @@
   --font-price: 1.9rem;
   --font-toggle: 1.1rem;
   --font-handle-label: 0.76rem;
+
+  /* 콘텐츠 페이지 공통 스케일 (가이드 중간값 기준) */
+  --font-content-title: 1.48rem;
+  --font-content-h2: 1.35rem;
+  --font-content-h3: 1rem;
+  --font-content-body: 0.96rem;
+  --font-content-list: 0.95rem;
+  --font-content-caption: 0.92rem;
 }
