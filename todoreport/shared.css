@@ -153,6 +153,13 @@ main {
   font-size: 0.78rem;
   font-weight: 700;
   color: #444;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
   margin-bottom: 2rem;
 }
 
@@ -213,6 +220,16 @@ main {
 }
 
 .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.cta-btn--compact {
+  font-size: 0.78rem;
+  padding: 0.45rem 0.95rem;
+}
+
+.cta-btn--compact svg {
+  width: 14px;
+  height: 14px;
+}
 
 .cta-btn--outline {
   background: transparent;
@@ -719,6 +736,122 @@ td {
 }
 
 .faq-answer a:hover { text-decoration: underline; }
+
+/* ── Support ── */
+.support-intro {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.7;
+  margin: -0.5rem 0 1.8rem;
+  max-width: 560px;
+}
+
+.support-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.support-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+a.support-card:hover {
+  background: var(--card-bg);
+  border-color: #ddd;
+}
+
+.support-card--static {
+  cursor: default;
+}
+
+.support-card-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg);
+}
+
+.support-card-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.support-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.support-card-body strong {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--fg);
+}
+
+.support-card-body span {
+  font-size: 0.86rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.support-card-body a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.support-card-body a:hover { text-decoration: underline; }
+
+.support-card-arrow {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+  color: var(--gray);
+  stroke-width: 2;
+}
+
+.support-biz {
+  padding: 1.4rem 1.2rem;
+  background: var(--card-bg);
+  border-radius: 14px;
+}
+
+.support-biz h2 {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--gray);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.support-biz p {
+  font-size: 0.84rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 0.35rem;
+}
+
+.support-biz p:last-child { margin-bottom: 0; }
 
 /* ── Footer ── */
 footer {
