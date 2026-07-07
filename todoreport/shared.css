@@ -1,3 +1,5 @@
+@import url('/shared/typography.css');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -53,10 +55,10 @@ header {
   mix-blend-mode: multiply;
 }
 
-.sep { color: var(--border); font-size: 1.25rem; }
+.sep { color: var(--border); font-size: var(--font-sep); }
 
 .page-name {
-  font-size: 1rem;
+  font-size: var(--font-body-plus);
   color: var(--fg);
   font-weight: 700;
 }
@@ -67,7 +69,7 @@ header {
 }
 
 .header-nav a {
-  font-size: 0.95rem;
+  font-size: var(--font-nav);
   font-weight: 700;
   color: var(--gray);
   text-decoration: none;
@@ -97,7 +99,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.82rem;
+  font-size: var(--font-sm-plus);
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--accent);
@@ -128,7 +130,7 @@ main {
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: var(--font-hero);
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1.2;
@@ -137,7 +139,7 @@ main {
 }
 
 .hero-sub {
-  font-size: 0.92rem;
+  font-size: var(--font-base);
   color: var(--gray);
   font-weight: 600;
 }
@@ -150,7 +152,7 @@ main {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 0.45rem 0.8rem;
-  font-size: 0.78rem;
+  font-size: var(--font-sm);
   font-weight: 700;
   color: #444;
 }
@@ -166,11 +168,17 @@ main {
 .notion-badge svg { width: 14px; height: 14px; stroke-width: 1.5; }
 
 .hero-desc {
-  font-size: 1rem;
+  font-size: var(--font-body-plus);
   color: #6a6a6a;
   line-height: 1.8;
   max-width: 520px;
   margin-bottom: 2rem;
+}
+
+.text-note {
+  margin-top: 1rem;
+  font-size: var(--font-sm-plus);
+  color: var(--gray);
 }
 
 .hero-badges {
@@ -184,7 +192,7 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.72rem;
+  font-size: var(--font-2xs);
   font-weight: 700;
   padding: 0.35rem 0.75rem;
   border-radius: 99px;
@@ -211,7 +219,7 @@ main {
   background: var(--fg);
   color: #fff;
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: var(--font-base-sm);
   font-weight: 700;
   padding: 0.85rem 1.8rem;
   border-radius: 99px;
@@ -222,7 +230,7 @@ main {
 .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
 .cta-btn--compact {
-  font-size: 0.78rem;
+  font-size: var(--font-sm);
   padding: 0.45rem 0.95rem;
 }
 
@@ -263,14 +271,14 @@ main {
 }
 
 .coming-soon p {
-  font-size: 0.88rem;
+  font-size: var(--font-md-plus);
   color: var(--gray);
   font-weight: 600;
 }
 
 /* ── Guide ── */
 .page-title {
-  font-size: 1.6rem;
+  font-size: var(--font-page-title);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 2.5rem;
@@ -290,7 +298,7 @@ main {
 }
 
 .guide-nav-title {
-  font-size: 0.78rem;
+  font-size: var(--font-sm);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -328,7 +336,7 @@ main {
   border-radius: 8px;
   background: var(--card-bg);
   color: var(--gray);
-  font-size: 1rem;
+  font-size: var(--font-body-plus);
   line-height: 1;
   cursor: pointer;
 }
@@ -377,7 +385,7 @@ main {
 
 .guide-nav-sheet a {
   display: block;
-  font-size: 0.94rem;
+  font-size: var(--font-base-plus);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -413,7 +421,7 @@ body.guide-nav-open {
 
 .guide-nav a {
   display: block;
-  font-size: 0.94rem;
+  font-size: var(--font-base-plus);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -435,7 +443,7 @@ body.guide-nav-open {
 }
 
 .guide-content h2 {
-  font-size: 1.5rem;
+  font-size: var(--font-sub-h2);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -444,14 +452,14 @@ body.guide-nav-open {
 }
 
 .guide-content h3 {
-  font-size: 1.05rem;
+  font-size: var(--font-sub-h3);
   font-weight: 800;
   color: var(--fg);
   margin: 1.6rem 0 0.7rem;
 }
 
 .guide-content p {
-  font-size: 1rem;
+  font-size: var(--font-body-plus);
   color: #555;
   line-height: 1.75;
   margin-bottom: 0.9rem;
@@ -464,7 +472,7 @@ body.guide-nav-open {
 }
 
 .guide-content li {
-  font-size: 0.98rem;
+  font-size: var(--font-body);
   color: #555;
   line-height: 1.65;
   margin-bottom: 0.35rem;
@@ -478,7 +486,7 @@ body.guide-nav-open {
 .guide-content a:hover { text-decoration: underline; }
 
 .guide-content table {
-  font-size: 0.94rem;
+  font-size: var(--font-base-plus);
 }
 
 .tip-box {
@@ -486,7 +494,7 @@ body.guide-nav-open {
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  font-size: 0.96rem;
+  font-size: var(--font-body-sm);
   color: #555;
   line-height: 1.65;
 }
@@ -515,14 +523,14 @@ body.guide-nav-open {
 }
 
 .feature-card p {
-  font-size: 0.84rem;
+  font-size: var(--font-md-sm);
   font-weight: 700;
   color: var(--fg);
   margin-bottom: 0.35rem;
 }
 
 .feature-card span {
-  font-size: 0.8rem;
+  font-size: var(--font-md);
   color: #777;
   line-height: 1.55;
 }
@@ -530,7 +538,7 @@ body.guide-nav-open {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.84rem;
+  font-size: var(--font-md-sm);
   margin: 1rem 0;
 }
 
@@ -588,7 +596,7 @@ td {
 
 .flow-step p {
   margin: 0;
-  font-size: 0.96rem;
+  font-size: var(--font-body-sm);
   font-weight: 400;
   color: #555;
   line-height: 1.65;
@@ -601,7 +609,7 @@ td {
 
 .flow-step-note {
   margin-top: 0.55rem;
-  font-size: 0.92rem;
+  font-size: var(--font-base);
   font-weight: 400;
   color: #888;
   line-height: 1.6;
@@ -627,7 +635,7 @@ td {
 }
 
 .plan-name {
-  font-size: 0.72rem;
+  font-size: var(--font-2xs);
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -638,14 +646,14 @@ td {
 .pricing-card.featured .plan-name { color: rgba(255,255,255,0.55); }
 
 .plan-price {
-  font-size: 1.9rem;
+  font-size: var(--font-price);
   font-weight: 800;
   letter-spacing: -0.04em;
   margin-bottom: 0.2rem;
 }
 
 .plan-period {
-  font-size: 0.78rem;
+  font-size: var(--font-sm);
   color: var(--gray);
   margin-bottom: 1.2rem;
 }
@@ -661,7 +669,7 @@ td {
 }
 
 .plan-features li {
-  font-size: 0.83rem;
+  font-size: var(--font-md);
   color: #555;
   display: flex;
   align-items: flex-start;
@@ -693,7 +701,7 @@ td {
 }
 
 .faq-item summary {
-  font-size: 0.92rem;
+  font-size: var(--font-base);
   font-weight: 700;
   color: var(--fg);
   padding: 1.1rem 1.3rem;
@@ -710,7 +718,7 @@ td {
 
 .faq-item summary::after {
   content: '+';
-  font-size: 1.1rem;
+  font-size: var(--font-toggle);
   font-weight: 400;
   color: var(--accent);
   flex-shrink: 0;
@@ -722,7 +730,7 @@ td {
 
 .faq-answer {
   padding: 0 1.3rem 1.2rem;
-  font-size: 0.88rem;
+  font-size: var(--font-md-plus);
   color: #555;
   line-height: 1.75;
 }
@@ -739,7 +747,7 @@ td {
 
 /* ── Support ── */
 .support-intro {
-  font-size: 0.95rem;
+  font-size: var(--font-nav);
   color: #666;
   line-height: 1.7;
   margin: -0.5rem 0 1.8rem;
@@ -747,16 +755,18 @@ td {
 }
 
 .support-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
   gap: 0.75rem;
   margin-bottom: 2.5rem;
+  align-items: stretch;
 }
 
 .support-card {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  height: 100%;
   padding: 1.15rem 1.2rem;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -802,13 +812,13 @@ a.support-card:hover {
 }
 
 .support-card-body strong {
-  font-size: 0.92rem;
+  font-size: var(--font-base);
   font-weight: 800;
   color: var(--fg);
 }
 
 .support-card-body span {
-  font-size: 0.86rem;
+  font-size: var(--font-md);
   color: #666;
   line-height: 1.6;
 }
@@ -836,7 +846,7 @@ a.support-card:hover {
 }
 
 .support-biz h2 {
-  font-size: 0.82rem;
+  font-size: var(--font-sm-plus);
   font-weight: 800;
   color: var(--gray);
   letter-spacing: 0.08em;
@@ -845,7 +855,7 @@ a.support-card:hover {
 }
 
 .support-biz p {
-  font-size: 0.84rem;
+  font-size: var(--font-md-sm);
   color: #666;
   line-height: 1.7;
   margin-bottom: 0.35rem;
@@ -873,12 +883,12 @@ footer {
   gap: 0.8rem;
 }
 
-.footer-bottom p { font-size: 0.75rem; color: var(--gray); }
+.footer-bottom p { font-size: var(--font-xs); color: var(--gray); }
 
 .footer-links { display: flex; gap: 1.5rem; }
 
 .footer-links a {
-  font-size: 0.75rem;
+  font-size: var(--font-xs);
   color: var(--gray);
   text-decoration: none;
   transition: color 0.15s;
@@ -962,7 +972,7 @@ footer {
   }
 
   .guide-toc-handle-text {
-    font-size: 0.76rem;
+    font-size: var(--font-handle-label);
     font-weight: 700;
     letter-spacing: 0.1em;
     writing-mode: vertical-rl;
@@ -1004,5 +1014,5 @@ footer {
   header, main, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   main { padding-top: 3rem; }
   .guide-nav ul { grid-template-columns: 1fr; }
-  .header-nav a { font-size: 0.88rem; padding: 0.45rem 0.9rem; }
+  .header-nav a { font-size: var(--font-md-plus); padding: 0.45rem 0.9rem; }
 }

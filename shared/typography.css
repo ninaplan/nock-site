@@ -1,0 +1,25 @@
+/* 앱 랜딩·하위페이지 공통 타이포 — 투두x리포트 랜딩 기준 */
+:root {
+  --font-2xs: 0.72rem;
+  --font-xs: 0.75rem;
+  --font-sm: 0.78rem;
+  --font-sm-plus: 0.82rem;
+  --font-md-sm: 0.84rem;
+  --font-md: 0.86rem;
+  --font-md-plus: 0.88rem;
+  --font-base-sm: 0.9rem;
+  --font-base: 0.92rem;
+  --font-base-plus: 0.94rem;
+  --font-nav: 0.95rem;
+  --font-body-sm: 0.96rem;
+  --font-body: 0.98rem;
+  --font-body-plus: 1rem;
+  --font-sub-h3: 1.05rem;
+  --font-page-title: 1.6rem;
+  --font-sub-h2: 1.5rem;
+  --font-hero: clamp(2rem, 4vw, 2.8rem);
+  --font-sep: 1.25rem;
+  --font-price: 1.9rem;
+  --font-toggle: 1.1rem;
+  --font-handle-label: 0.76rem;
+}
