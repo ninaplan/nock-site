@@ -347,11 +347,20 @@
     }, { threshold: 0 });
 
     function measureDrawer() {
-      panelWidth = Math.max(0, guideTocTrack.offsetWidth - guideTocHandle.offsetWidth);
+      if (guideTocDrawer.hidden) return false;
+      const width = guideTocTrack.offsetWidth - guideTocHandle.offsetWidth;
+      if (width > 0) panelWidth = width;
+      return panelWidth > 0;
     }
 
     function applyDrawerOffset(offset, animate) {
-      measureDrawer();
+      const ready = measureDrawer();
+      if (!ready) {
+        guideTocTrack.style.transition = 'none';
+        guideTocTrack.style.transform = 'translateX(100%)';
+        return;
+      }
+
       drawerOffset = Math.max(0, Math.min(panelWidth, offset));
       guideTocTrack.style.transition = animate ? '' : 'none';
       guideTocTrack.style.transform = `translateX(${drawerOffset}px)`;
@@ -365,8 +374,27 @@
     }
 
     function setDrawerOpen(open, animate = true) {
-      measureDrawer();
+      if (!measureDrawer()) {
+        layoutDrawerClosed();
+        return;
+      }
       applyDrawerOffset(open ? 0 : panelWidth, animate);
+    }
+
+    function layoutDrawerClosed() {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (guideTocDrawer.hidden || drawerOpen) return;
+          if (!measureDrawer()) return;
+          applyDrawerOffset(panelWidth, false);
+        });
+      });
+    }
+
+    function syncInlineNavVisible() {
+      if (!mobileNavQuery.matches) return;
+      const rect = guideNavInline.getBoundingClientRect();
+      inlineNavVisible = rect.bottom > 0 && rect.top < window.innerHeight;
     }
 
     function updateDrawerVisibility() {
@@ -381,16 +409,12 @@
         setDrawerOpen(false, false);
         return;
       }
-      requestAnimationFrame(() => {
-        if (!drawerOpen) {
-          measureDrawer();
-          applyDrawerOffset(panelWidth, false);
-        }
-      });
+      layoutDrawerClosed();
     }
 
     function onDrawerPointerDown(event) {
       if (!mobileNavQuery.matches || guideTocDrawer.hidden) return;
+      measureDrawer();
       dragPointerId = event.pointerId;
       dragMoved = false;
       dragStartX = event.clientX;
@@ -410,6 +434,10 @@
       if (dragPointerId !== event.pointerId) return;
       guideTocHandle.releasePointerCapture(event.pointerId);
       dragPointerId = null;
+      if (!measureDrawer()) {
+        layoutDrawerClosed();
+        return;
+      }
       if (!dragMoved) {
         setDrawerOpen(!drawerOpen, true);
         return;
@@ -467,11 +495,25 @@
     }
 
     window.addEventListener('resize', () => {
-      if (mobileNavQuery.matches) applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
+      if (!mobileNavQuery.matches || guideTocDrawer.hidden) return;
+      if (!measureDrawer()) return;
+      applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
     });
 
+    const drawerResizeObserver = new ResizeObserver(() => {
+      if (guideTocDrawer.hidden) return;
+      if (!measureDrawer()) return;
+      applyDrawerOffset(drawerOpen ? 0 : panelWidth, false);
+    });
+    drawerResizeObserver.observe(guideTocTrack);
+
+    syncInlineNavVisible();
     bindMobileNavObserver();
     updateDrawerVisibility();
+    window.addEventListener('pageshow', () => {
+      syncInlineNavVisible();
+      updateDrawerVisibility();
+    });
     window.addEventListener('scroll', updateActiveNav, { passive: true });
     updateActiveNav();
   </script>

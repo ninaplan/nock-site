@@ -278,7 +278,7 @@ main {
 
 /* ── Guide ── */
 main:has(.guide-layout) > .page-title {
-  font-size: 1.35rem;
+  font-size: 1.48rem;
 }
 
 .page-title {
@@ -389,7 +389,7 @@ main:has(.guide-layout) > .page-title {
 
 .guide-nav-sheet a {
   display: block;
-  font-size: var(--font-md-plus);
+  font-size: var(--font-base);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -425,7 +425,7 @@ body.guide-nav-open {
 
 .guide-nav a {
   display: block;
-  font-size: var(--font-md-plus);
+  font-size: var(--font-base);
   font-weight: 600;
   color: #666;
   text-decoration: none;
@@ -447,7 +447,7 @@ body.guide-nav-open {
 }
 
 .guide-content h2 {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -456,14 +456,14 @@ body.guide-nav-open {
 }
 
 .guide-content h3 {
-  font-size: var(--font-base-plus);
+  font-size: var(--font-body-plus);
   font-weight: 800;
   color: var(--fg);
   margin: 1.6rem 0 0.7rem;
 }
 
 .guide-content p {
-  font-size: var(--font-base);
+  font-size: var(--font-body-sm);
   color: #555;
   line-height: 1.75;
   margin-bottom: 0.9rem;
@@ -476,7 +476,7 @@ body.guide-nav-open {
 }
 
 .guide-content li {
-  font-size: var(--font-base);
+  font-size: var(--font-nav);
   color: #555;
   line-height: 1.65;
   margin-bottom: 0.35rem;
@@ -490,7 +490,7 @@ body.guide-nav-open {
 .guide-content a:hover { text-decoration: underline; }
 
 .guide-content table {
-  font-size: var(--font-md-plus);
+  font-size: var(--font-base);
 }
 
 .tip-box {
@@ -498,7 +498,7 @@ body.guide-nav-open {
   border-radius: 12px;
   padding: 1rem 1.2rem;
   margin: 1rem 0;
-  font-size: var(--font-md-plus);
+  font-size: var(--font-base);
   color: #555;
   line-height: 1.65;
 }
@@ -600,7 +600,7 @@ td {
 
 .flow-step p {
   margin: 0;
-  font-size: var(--font-md-plus);
+  font-size: var(--font-base);
   font-weight: 400;
   color: #555;
   line-height: 1.65;
@@ -613,7 +613,7 @@ td {
 
 .flow-step-note {
   margin-top: 0.55rem;
-  font-size: var(--font-sm-plus);
+  font-size: var(--font-md-plus);
   font-weight: 400;
   color: #888;
   line-height: 1.6;
